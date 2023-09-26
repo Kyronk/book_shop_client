@@ -51,13 +51,14 @@ const Header = () => {
             <Container>
                 <Row>
                     <div className='nav__wrapper'>
-                        <div className='logo'>
-                            <img src={logo} alt='logo' />
-                            <div>
-                                <h1>Book Shop</h1>
-                                {/* <p>Since 1995</p> */}
+                        <Link to="/home">
+                            <div className='logo'>
+                                    <img src={logo} alt='logo' />
+                                    <div>
+                                        <h1>Book Shop</h1>
+                                    </div>
                             </div>
-                        </div>
+                        </Link>
 
                         <div className='navigation' ref={menuRef} onClick={menuToggle}>
                             <ul className="menu">
