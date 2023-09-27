@@ -46,6 +46,17 @@
     object-fit: contain;
 }
 
+.text__header {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text__header .right__light-item {
+    font-size: 30px;
+    font-weight: 600;
+}
+
 .store__btn {
     background: #fff;
     color: var(--primary-color);

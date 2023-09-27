@@ -7,11 +7,12 @@ import { checkTargetForNewValues, motion } from 'framer-motion';
 
 import Helmet from '../components/Helmet/Helmet';
 import "../styles/home.css";
+import Service from "../services/Services";
+import ProductList from '../components/UI/ProductList';
 
 import { Container, Row, Col } from "reactstrap";
 import heroImg from "../assets/images/hero-img.png";
 
-import Service from "../services/Services";
 
 
 const Home = () => {
@@ -26,8 +27,12 @@ const Home = () => {
     const [popularProducts, setPopularProducts] = useState([]);
 
     const getData = async () => {
-        const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=3&available[]=18&available[]=30`);
-        console.log(response);
+        // const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=3&available[]=18&available[]=30`);
+        const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=5`);
+
+        const listProduct = response.data.data.list.rows;
+        console.log(listProduct);
+        setTrendingProducts(listProduct);
 
     }
 
@@ -71,10 +76,13 @@ const Home = () => {
             <section className='trending__products'>
                 <Container>
                     <Row>
-                        <Col lg='12' className='text-center'>
+                        <Col lg='12' className='text-center text__header'>
                             <h2 className='section__title'>Trending Products</h2>
+                            <span className="right__light-item">
+                                <i className="ri-arrow-right-line"></i>
+                            </span>
                         </Col>
-                        {/* <ProductList data={trendingProducts} /> */}
+                        <ProductList data={trendingProducts} />
                     </Row>
                 </Container>
             </section>

@@ -1,5 +1,11 @@
 .product__item {
     cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    border-radius: 5px;
+}
+
+.mb-2 {
+    width: 20%;
 }
 
 .product__info h3 {
@@ -9,7 +15,18 @@
     margin-top: 15px;
 }
 
+.product__img img{
+    height: 300px;
+    /* width: 100%; */
+    object-fit: contain;
+}
 
+
+.product__info {
+    margin-top: 5px;
+    height: 60px;
+    text-align: center;
+}
 
 .product__info h3 a:hover {
     color: inherit;
