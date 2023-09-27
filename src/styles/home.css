@@ -48,13 +48,14 @@
 
 .text__header {
     margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
-.text__header .right__light-item {
+.text__header .right__light-item1{
     font-size: 30px;
     font-weight: 600;
+    text-align: end;
 }
 
 .store__btn {
@@ -67,9 +68,13 @@
     color: var(--primary-color);
 }
 
+.product__loading {
+    text-align: center;
+}
 
 
 @media only screen and (max-width: 992px) {
+
     .hero__content h2 {
         font-size: 2rem;
     }
