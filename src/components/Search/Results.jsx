@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const Results = ({results}) => {
     return (
         <div className='results'>
-            <div className="search-results-container">
-                <div className="search-results-content">
+            <div className="results__container">
+                <div className="results__content">
                     {
                         results.map((item, index) => {
                             return (
