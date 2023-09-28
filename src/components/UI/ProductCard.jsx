@@ -8,8 +8,24 @@ import { cutLongText } from '../../helper/cutText';
 
 import { toast } from 'react-toastify';
 
+import { useDispatch } from 'react-redux';
+import { cartAction } from '../../redux/slices/cartSlice';
 
 const ProductCard = ({item}) => {
+
+    const dispatch = useDispatch();
+
+    const addToCart = () => {
+        dispatch(cartAction.addItem({
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            image: item.image
+        }));
+
+        toast.success("Product added successfully");
+    }
+
     return (
         <Col lg='2' md='5' className='mb-2' >
             <div className="product__item">
@@ -29,7 +45,7 @@ const ProductCard = ({item}) => {
                     <span className="price">${item.price}</span>
                     <motion.span 
                         whileTap={{ scale: 1.2 }} 
-                        // onClick={addToCart}
+                        onClick={addToCart}
                         >
                         <i className="ri-add-line"></i>
                     </motion.span>

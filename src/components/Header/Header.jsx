@@ -9,6 +9,8 @@ import { NavLink, Link } from 'react-router-dom';
 import "./Header.css";
 import { Container, Row } from "reactstrap";
 
+import { useSelector } from 'react-redux';
+
 const nav__links = [
     {
         path: 'home',
@@ -27,6 +29,9 @@ const nav__links = [
 const Header = () => {
     const headerRef = useRef(null);
     const menuRef = useRef(null);
+
+    const totalQuantity = useSelector(state => state.cart.totalQuantity);
+
 
     const stickyHeaderFunc = () => {
         window.addEventListener('scroll', () => {
@@ -83,8 +88,8 @@ const Header = () => {
                             <span className='cart__icon'>
                                 <Link to="/cart">
                                     <i className="ri-shopping-bag-line"></i>
-                                    <span className='badge'>2</span>
-                                    {/* <span className='badge'>{totalQuantity === 0 ? "" : totalQuantity}</span> */}
+                                    {/* <span className='badge'>2</span> */}
+                                    <span className='badge'>{totalQuantity === 0 ? "" : totalQuantity}</span>
                                 </Link>
                             </span>
 
