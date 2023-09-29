@@ -1,0 +1,76 @@
+.auth__form {
+    background: var(--primary-color);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.auth__btn {
+    color: var(--primary-color);
+    background: #fff;
+    font-weight: 600;
+}
+
+.auth__form p {
+    margin-top: 30px;
+}
+
+.auth__form p a {
+    color: rgba(255, 255, 255, 0.735);
+}
+
+.auth__form input[type="file"] {
+    color: #fff;
+    cursor: pointer;
+}
+
+/*  */
+
+.form__main .form__input {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.form__input input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+}
+
+.form__input .form__label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #baadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.form__input .form__span::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #2691d9;
+}
+
+
+.form__input input:focus ~ .form__label,
+.form__input input:valid ~ .form__label{
+    top: -5px;
+    color: #2691d9;
+}
+
+.form__input input:focus ~ .form__span::before,
+.form__input input:valid ~ .form__span::before {
+    width: 100%;
+}

@@ -12,6 +12,16 @@
     --heading-fontSize: 2rem;
     --small-text-color: #999;
     --heading-text-color: #0a1d37;
+    
+
+        /* css for dropdown */
+    --bg: #242526;
+    --bg-accent: #48414d;
+    --text-color: #dadce1;
+    --nav-size: 60px;
+    --border: 1px solid #474a4d;
+    --border-radius: 8px;
+    --speed: 500ms;
 }
 
 /* reset browser default */

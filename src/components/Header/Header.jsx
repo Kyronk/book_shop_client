@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from 'react'
 
 import logo from "../../assets/images/eco-logo.png";
 import userIcon from "../../assets/images/user-icon.png"
-
 import { motion } from "framer-motion"
+
+import DropDownMenu from '../DropdownMenu/DropDown';
 
 import { NavLink, Link } from 'react-router-dom';
 import "./Header.css";
@@ -25,6 +26,17 @@ const nav__links = [
         display: 'Cart'
     },
 ];
+
+const dropdown = [
+    {
+        icon: "ri-user-3-line",
+        text: "Profile User"
+    },
+    {
+        icon: "ri-logout-box-line",
+        text: "Sign out"
+    }
+]
 
 const Header = () => {
     const headerRef = useRef(null);
@@ -94,7 +106,26 @@ const Header = () => {
                             </span>
 
                             <span>
-                                <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" />
+
+                                <DropDownMenu />
+
+                                {/* <div className="dropdown__container">
+
+                                <div className="dropdown__menu">
+                                    <ul>
+                                    {
+                                        dropdown.map((item, index) => (
+                                            <DropdownItem 
+                                                key={index}
+                                                icon={item.icon}
+                                                text={item.text}
+                                                />
+                                                ))
+                                    }
+                                    </ul>
+                                </div>
+
+                                </div> */}
                             </span> 
 
                             <div className='mobile__menu'>
@@ -110,6 +141,15 @@ const Header = () => {
                 </Row>
             </Container>
         </header>
+    )
+}
+
+function DropdownItem (props) {
+    return (
+        <li className="dropdown__item">
+            <i className={props.icon}></i>
+            <a href="">{props.text}</a>
+        </li>
     )
 }
 
