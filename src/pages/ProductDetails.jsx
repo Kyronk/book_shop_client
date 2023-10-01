@@ -19,18 +19,18 @@ import { toast } from 'react-toastify';
 
 
 const ProductDetails = () => {
-    
-    const [loading, setLoading] = useState(true);
+
     const { id } = useParams();
     const dispatch = useDispatch();
     
+    const [loading, setLoading] = useState(true);
     const [bookItem, setBookItem] = useState({});
-    
     const [tab, setTab] = useState('desc');
+    const [rating, setRating] = useState(null);
+
     const reviewUser = useRef(''); 
     const reviewMsg = useRef('');
 
-    const [rating, setRating] = useState(null);
     
 
     const getBookItem = async () => {

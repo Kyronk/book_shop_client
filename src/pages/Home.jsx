@@ -26,8 +26,8 @@ const Home = () => {
 
 
     const [trendingProducts, setTrendingProducts] = useState([]);
-    const [bestSalesProducts, setBestSalesProducts] = useState([]);
-    const [mobileProducts, setMobileProducts] = useState([]);
+    // const [bestSalesProducts, setBestSalesProducts] = useState([]);
+    // const [mobileProducts, setMobileProducts] = useState([]);
 
     const getData = async () => {
         setLoading(true);
