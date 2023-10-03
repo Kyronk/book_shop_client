@@ -35,7 +35,7 @@ const Home = () => {
         const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=5`);
 
         const listProduct = response.data.data.list.rows;
-        console.log(listProduct);
+        // console.log(listProduct);
         setTrendingProducts(listProduct);
         setLoading(false);
 
