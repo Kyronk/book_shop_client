@@ -21,7 +21,7 @@ const authSlice = createSlice({
         error: null
     },
     reducers: {
-
+        
     },
     extraReducers:(builder) => {
         builder

@@ -85,13 +85,18 @@ const Cart = () => {
 
                     <Col lg='3'>
                         <div>
-                        <h6 className='d-flex align-items-center justify-content-between'>
+                            <h6 className='d-flex align-items-center justify-content-between'>
+                                Item
+                                <span className='fs-4 fw-bold'> {cartItems? cartItems.length: 0}</span>
+                            </h6>
+                            <h6 className='d-flex align-items-center justify-content-between'>
                                 All Item
                                 <span className='fs-4 fw-bold'> {totalQuantity}</span>
                             </h6>
                             <h6 className='d-flex align-items-center justify-content-between'>
-                                Subtotal
-                                <span className='fs-4 fw-bold'>$ {totalPrice}</span>
+                                Subtotal 
+                                {/* ... */}
+                                <span className='fs-4 fw-bold'>$ {totalPrice.toFixed(2)}</span>
                             </h6>
                         </div>
                         <p className='fs-6 mt-2'>taxes and shipping will calculate in checkout</p>

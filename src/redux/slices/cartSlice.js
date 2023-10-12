@@ -2,6 +2,8 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 
+
+
 const initialState = {
 
     cartItems: [],
@@ -34,8 +36,14 @@ const cartSlice = createSlice({
                     
                     const {price, quantityItem} = cartItem;
                     const itemTotal = price * quantityItem;
+
+                    console.log(itemTotal)
+                    // cartTotal.totalPrice += Math.round(itemTotal);
                     cartTotal.totalPrice += itemTotal;
+                    
+                    
                     cartTotal.totalQuantity += quantityItem;
+                    
                     return cartTotal;
                 }, {
                     totalPrice: 0,
@@ -70,33 +78,26 @@ const cartSlice = createSlice({
 
         inCreaseItemQuantity: (state, action) => {
             state.cartItems = state.cartItems.map((item) => {
-                console.log(item.quantityItem)
-                const check = item.quantityItem;
-                if( check >= 0) {
-                    if (item.id === action.payload) {
-                        return { ...item, quantityItem: item.quantityItem + 1}
-                    }
+                // console.log(item.quantityItem)
+                // const check = item.quantityItem;
+                
+                if (item.id === action.payload) {
+                    return { ...item, quantityItem: item.quantityItem + 1}
                 }
+                
                 return item;
             })
         },
 
         decreaseItemQuantity: (state, action) => {
             state.cartItems = state.cartItems.map((item) => {
-                console.log(item.quantityItem)
                 const check = item.quantityItem;
-                if( check === 1) {
-                    return item
-                }
+                if( check === 1) return item;
                 if (item.id === action.payload) {
                     return { ...item, quantityItem: item.quantityItem - 1}
-                }
+                };
                 return item;
-                // if (item.id === action.payload) {
-                    
-                //     return { ...item, quantityItem: item.quantityItem - 1}
-                // }
-                // return item;
+
             })
         }
     }
