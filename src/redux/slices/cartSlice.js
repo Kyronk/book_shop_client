@@ -11,7 +11,7 @@ const initialState = {
 
 const cartSlice = createSlice({
     name: 'cart',
-    initialState,
+    initialState: initialState,
     reducers: {
         addItem: (state, action) => {
             // let item = action.payload;
@@ -43,7 +43,9 @@ const cartSlice = createSlice({
                 }
             )
 
-            state.totalPrice = parseInt(totalPrice.toFixed(2));
+            // state.totalPrice = parseInt(totalPrice.toFixed(2));
+            state.totalPrice = totalPrice; // fix 
+
             state.totalQuantity = totalQuantity;
         },
         
@@ -64,6 +66,38 @@ const cartSlice = createSlice({
             // const test = action.payload
             // console.log(test)
             state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
+        },
+
+        inCreaseItemQuantity: (state, action) => {
+            state.cartItems = state.cartItems.map((item) => {
+                console.log(item.quantityItem)
+                const check = item.quantityItem;
+                if( check >= 0) {
+                    if (item.id === action.payload) {
+                        return { ...item, quantityItem: item.quantityItem + 1}
+                    }
+                }
+                return item;
+            })
+        },
+
+        decreaseItemQuantity: (state, action) => {
+            state.cartItems = state.cartItems.map((item) => {
+                console.log(item.quantityItem)
+                const check = item.quantityItem;
+                if( check === 1) {
+                    return item
+                }
+                if (item.id === action.payload) {
+                    return { ...item, quantityItem: item.quantityItem - 1}
+                }
+                return item;
+                // if (item.id === action.payload) {
+                    
+                //     return { ...item, quantityItem: item.quantityItem - 1}
+                // }
+                // return item;
+            })
         }
     }
 });

@@ -19,10 +19,6 @@ const Cart = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const totalPrice = useSelector(state => state.cart.totalPrice);
-    
-    // console.log(cartItems)
-    
-    // console.log(cartItems);
 
     const oderList = [];
     const userID = "axx";
@@ -38,7 +34,7 @@ const Cart = () => {
     // console.log(oderList);
 
     const handleOder = async() => {
-        await axios.post(`http://localhost:4000/api/v2/oder/create`, oderList)
+        await axios.post(`http://localhost:4000/api/v2/oder/create`, oderList);
 
         toast.success("oder is sucess")
     }
@@ -137,12 +133,21 @@ const Tr = ({ item }) => {
             <td>{item.title}</td>
             <td>$ {item.price}</td>
             <td>
-                <button className='quantity__btn'>  - </button>
-                <span className='quantity__value'>
+                <div className='quantity__main'>
+                    <button 
+                        className='quantity__btn'
+                        // onClick={() => dispatch(cartAction.decreaseItemQuantity(item.id))}
+                        onClick={() => dispatch(cartAction.decreaseItemQuantity(item.id))}
+                        >  - </button>
+                    <span className='quantity__value'>
+                    {item.quantityItem}
+                    </span>
+                    <button 
+                        className='quantity__btn'
+                        onClick={() => dispatch(cartAction.inCreaseItemQuantity(item.id))}
+                        > + </button>
 
-                {item.quantityItem}
-                </span>
-                <button className='quantity__btn'> + </button>
+                </div>
             </td>
             <td>
                 <motion.i 

@@ -24,5 +24,11 @@ td {
     color: aliceblue;
     background: black;
     font-size: 1.2rem;
+}
 
+.quantity__main {
+    display: flex;
+}
+@media only screen and (max-width: 1400px) {
+    
 }
