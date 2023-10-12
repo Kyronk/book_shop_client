@@ -5,8 +5,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 
     cartItems: [],
-    totalAmount: 0,
-    totalQuantity: 0
+    totalQuantity: 0,
+    totalPrice: 0
 }
 
 const cartSlice = createSlice({
@@ -14,45 +14,56 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action) => {
-            const newItem = action.payload;
-            const existingItem = state.cartItems.find(item => item.id === newItem.id);
+            // let item = action.payload;
+        
 
-            state.totalQuantity++;
-            
-            if (!existingItem) {
-                state.cartItems.push({
-                    id: newItem.id,
-                    title: newItem.title,
-                    image: newItem.image,
-                    price: newItem.price,
-                    quantity: 1,
-                    totalPrice: newItem.price
-                })
-            }
-            else {
-                existingItem.quantity++;
-                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(newItem.price);
-
+            let find = state.cartItems.findIndex((item) => item.id === action.payload.id);
+            if(find >= 0){
+                state.cartItems[find].quantityItem += 1;
+                //state.cartItems[find].price += item.price;
+            } else {
+                state.cartItems.push(action.payload);
             }
 
-            state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
-
-            // console.log(state.totalQuantity);
-            // console.log(state.cartItems);
-            // console.log(newItem)
+    
         },
 
+        getCartTotal: (state, action) => {
+            let {totalQuantity, totalPrice} = state.cartItems.reduce(
+                (cartTotal, cartItem) => {
+                    
+                    const {price, quantityItem} = cartItem;
+                    const itemTotal = price * quantityItem;
+                    cartTotal.totalPrice += itemTotal;
+                    cartTotal.totalQuantity += quantityItem;
+                    return cartTotal;
+                }, {
+                    totalPrice: 0,
+                    totalQuantity: 0
+                }
+            )
+
+            state.totalPrice = parseInt(totalPrice.toFixed(2));
+            state.totalQuantity = totalQuantity;
+        },
+        
+
+        // làm lại cái xoá
+
         deleteItem: (state, action) => {
-            const id = action.payload;
-            const existingItem = state.cartItems.find(item => item.id === id);
+            // const id = action.payload;
+            // const existingItem = state.cartItems.find(item => item.id === id);
 
-            if(existingItem) {
-                state.cartItems = state.cartItems.filter(item => item.id !== id);
-                state.totalQuantity = state.totalQuantity - existingItem.quantity
-            }
+            // if(existingItem) {
+            //     state.cartItems = state.cartItems.filter(item => item.id !== id);
+            //     state.totalQuantity = state.totalQuantity - existingItem.quantity
+            // }
 
-            state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
-
+            // state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+            //
+            // const test = action.payload
+            // console.log(test)
+            state.cartItems = state.cartItems.filter((item) => item.id !== action.payload);
         }
     }
 });

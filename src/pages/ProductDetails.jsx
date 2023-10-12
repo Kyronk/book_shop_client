@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import { motion } from "framer-motion";
-import ProductList from "../components/UI/ProductList";
+// import ProductList from "../components/UI/ProductList";
 
 // redux
 import { useDispatch } from 'react-redux';
@@ -26,7 +26,7 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(true);
     const [bookItem, setBookItem] = useState({});
     const [tab, setTab] = useState('desc');
-    const [rating, setRating] = useState(null);
+    // const [rating, setRating] = useState(null);
 
     const reviewUser = useRef(''); 
     const reviewMsg = useRef('');
@@ -49,6 +49,7 @@ const ProductDetails = () => {
             image: bookItem.image,
             title: bookItem.title,
             price: bookItem.price,
+            quantityItem: 1
         }));
         toast.success('Product add is successfully');
     }

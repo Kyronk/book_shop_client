@@ -11,3 +11,18 @@ td i {
 td {
     color: var(--primary-color);
 }
+
+.quantity__value {
+    padding: 0 10px;
+    text-align: center;
+}
+
+.quantity__btn {
+    padding:0 10px;
+    border: none;
+    border-radius: 3px;
+    color: aliceblue;
+    background: black;
+    font-size: 1.2rem;
+
+}

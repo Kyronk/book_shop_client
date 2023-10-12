@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react'
 
 import logo from "../../assets/images/eco-logo.png";
-import userIcon from "../../assets/images/user-icon.png"
-import { motion } from "framer-motion"
+// import userIcon from "../../assets/images/user-icon.png"
+// import { motion } from "framer-motion"
 
 import DropDownMenu from '../DropdownMenu/DropDown';
 
@@ -10,7 +10,8 @@ import { NavLink, Link } from 'react-router-dom';
 import "./Header.css";
 import { Container, Row } from "reactstrap";
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartAction } from "../../redux/slices/cartSlice";
 
 const nav__links = [
     {
@@ -42,7 +43,12 @@ const Header = () => {
     const headerRef = useRef(null);
     const menuRef = useRef(null);
 
-    const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    // const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    const {cartItems, totalQuantity} = useSelector((state) => state.cart);
+
+    const dispatch = useDispatch()
+
+
 
 
     const stickyHeaderFunc = () => {
@@ -56,10 +62,10 @@ const Header = () => {
     };
 
     useEffect(() => {
+        dispatch(cartAction.getCartTotal());
         stickyHeaderFunc();
-
         return () => window.removeEventListener("scroll", stickyHeaderFunc)
-    });
+    }, [cartItems]);
 
     const menuToggle = () => menuRef.current.classList.toggle('active__menu');
 
