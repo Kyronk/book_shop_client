@@ -126,8 +126,8 @@ const Shop = () => {
                     </Container>
                 </section>
 
-                <section>
-                    {/* <div className='down'>
+                {/* <section> */}
+                    <div className='down'>
                         <div className='pagination-main'>
                             <ReactPaginate
                                 className='page'
@@ -146,8 +146,8 @@ const Shop = () => {
                                 activeLinkClassName="page-num-active"
                             />
                         </div>
-                    </div> */}
-                </section>
+                    </div>
+                {/* </section> */}
             </section>
 
         </Helmet>

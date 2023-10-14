@@ -37,7 +37,7 @@ const cartSlice = createSlice({
                     const {price, quantityItem} = cartItem;
                     const itemTotal = price * quantityItem;
 
-                    console.log(itemTotal)
+                    // console.log(itemTotal);
                     // cartTotal.totalPrice += Math.round(itemTotal);
                     cartTotal.totalPrice += itemTotal;
                     
@@ -59,7 +59,6 @@ const cartSlice = createSlice({
         
 
         // làm lại cái xoá
-
         deleteItem: (state, action) => {
             // const id = action.payload;
             // const existingItem = state.cartItems.find(item => item.id === id);
@@ -99,6 +98,12 @@ const cartSlice = createSlice({
                 return item;
 
             })
+        },
+        
+        oderSuccess: (state, action) => {
+            state.cartItems = [];
+            state.totalQuantity = 0;
+            state.totalPrice = 0;
         }
     }
 });

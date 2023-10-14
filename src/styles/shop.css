@@ -18,31 +18,38 @@
 
 /* paginate */
 
+.down {
+    width: 100%;
+    /* background: red; */
+}
 
 .pagination-main{
-    /* max-width: 300px;
-    min-width: 200px; */
+    /* background-color: red; */
+    /* width: 300px; */
     display: flex;
     justify-content: center;
 }
 
-.page {
-    padding: 5px 0px;
-    list-style: none;
+/* .page {
     display: flex;
-    cursor: pointer;
-    border: 2px rgba(41, 41, 79, 0) solid;
-    border-radius: 15px;
-    background: rgba(46, 49, 50, 0);
-}
+    justify-content: space-between;
+    
+} */
+
+ul.page {
+    width: 100%px;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}   
 
 .page-num {
-    margin: 0px 5px;
+    margin: 0px 2px;
     border: black solid 1px;
-    padding: 5px 20px;
+    padding: 2px 10px;
     border-radius: 25px;
     color: rgba(23, 21, 21, 0.803);
-    
 
 }
 
@@ -55,6 +62,38 @@
     background-color: #10121584;
     color: white;
 }
+
+
+@media only screen and (max-width: 700px) {
+    .page-num {
+        font-size: 10px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .page-num {
+        font-size: 10px;
+        width: 10px;
+        margin: 30px 4px;
+        padding: 5px 13px;
+    }
+
+    .page {
+        
+
+    }
+
+    .pagination-main{
+        /* display: block;
+        width: 300px; */
+
+    }
+
+}
+
+
+
 /* @media only screen and (max-width: 968px) {
     .filter__widget {
         margin-bottom: 30px;

@@ -19,13 +19,14 @@ const Cart = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const totalPrice = useSelector(state => state.cart.totalPrice);
+    // console.log(cartItems.length);
 
     const oderList = [];
     const userID = "axx";
     cartItems.forEach((item) =>{
         const book = {
             "book_id": item.id,
-            "quantity": item.quantity,
+            "quantity": item.quantityItem,
             "price": item.price,
             "user_id": userID
         }
@@ -34,9 +35,11 @@ const Cart = () => {
     // console.log(oderList);
 
     const handleOder = async() => {
+
         await axios.post(`http://localhost:4000/api/v2/oder/create`, oderList);
 
-        toast.success("oder is sucess")
+        toast.success("oder is sucess");
+        dispatch(cartAction.oderSuccess());
     }
 
     const dispatch = useDispatch()
@@ -103,11 +106,15 @@ const Cart = () => {
                         <div>
 
                             {/* <Link to='/checkout'> */}
-                                <button
+                            {
+                                cartItems && cartItems.length <= 0?  "" 
+                                : <button
                                     onClick={handleOder}
                                     className='buy__btn w-100'>
                                     Check out
-                                </button>                                   
+                                </button>        
+                            }
+                                                        
                             {/* </Link> */}
 
                             <Link to='/shop'>
