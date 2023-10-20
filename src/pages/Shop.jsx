@@ -7,6 +7,8 @@ import CommonSection from '../components/UI/CommonSection';
 import Helmet from "../components/Helmet/Helmet";
 import {Container, Row, Col} from "reactstrap"
 
+import { HOSTNAME } from '../api/api';
+
 import ReactPaginate from "react-paginate";
 import ProductList from "../components/UI/ProductList";
 
@@ -32,7 +34,7 @@ const Shop = () => {
     const fetchData = async (currentPage) => {
         setLoading(true);
         const response = await axios.get(
-            `http://localhost:4000/api/v2/book/listbook?${sort}&page=${currentPage ? currentPage : 1}`
+            `${HOSTNAME}/api/v2/book/listbook?${sort}&page=${currentPage ? currentPage : 1}`
             // `http://localhost:4000/api/v2/book/listbook?${sort}&page=${currentPage}`
             // `http://localhost:4000/api/v2/book/listbook?order[]=price&order[]=DESC&page=${currentPage}`
             );

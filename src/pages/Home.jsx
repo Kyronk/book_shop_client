@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
+import { HOSTNAME } from "../api/api";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -32,7 +33,7 @@ const Home = () => {
     const getData = async () => {
         setLoading(true);
         // const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=3&available[]=18&available[]=30`);
-        const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=5&available[]=18&available[]=30`);
+        const response = await axios.get(`${HOSTNAME}/api/v2/book/listbook?limit=5&available[]=18&available[]=30`);
 
         const listProduct = response.data.data.list.rows;
         // console.log(listProduct);
@@ -44,7 +45,7 @@ const Home = () => {
         setLoading(true);
         setLoading(true);
         // const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=3&available[]=18&available[]=30`);
-        const response = await axios.get(`http://localhost:4000/api/v2/book/listbook?limit=5&page=2&available[]=18&available[]=30`);
+        const response = await axios.get(`${HOSTNAME}/api/v2/book/listbook?limit=5&page=2&available[]=18&available[]=30`);
 
         const listProduct = response.data.data.list.rows;
         // console.log(listProduct);

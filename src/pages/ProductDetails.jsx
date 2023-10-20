@@ -21,6 +21,7 @@ import { toast } from 'react-toastify';
 const ProductDetails = () => {
 
     const { id } = useParams();
+    // console.log(id)
     const dispatch = useDispatch();
     
     const [loading, setLoading] = useState(true);
@@ -36,9 +37,9 @@ const ProductDetails = () => {
     const getBookItem = async () => {
         const response = await axios.get(`${HOSTNAME}/api/v2/book/item/${id}`);
         const book = response.data.data.response;
+        console.log(book);
         setBookItem(book);
         setLoading(false)
-        // console.log(book);
     }
 
 

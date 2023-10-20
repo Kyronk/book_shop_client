@@ -5,11 +5,12 @@ import CommonSection from '../components/UI/CommonSection';
 import { Container, Row, Col } from "reactstrap";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import { HOSTNAME } from '../api/api';
+import axios from 'axios';
 
 // redux
 import { cartAction } from "../redux/slices/cartSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // import {};
@@ -36,7 +37,7 @@ const Cart = () => {
 
     const handleOder = async() => {
 
-        await axios.post(`http://localhost:4000/api/v2/oder/create`, oderList);
+        await axios.post(`${HOSTNAME}/api/v2/oder/create`, oderList);
 
         toast.success("oder is sucess");
         dispatch(cartAction.oderSuccess());
